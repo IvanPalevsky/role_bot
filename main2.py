@@ -29,10 +29,10 @@ def assign_role(message):
 
 @bot.message_handler(content_types=['text'])
 def text_handler_url(message):
-    if "https://" and not("https://www.youtube.com/") and not("https://store.steampowered.com/") and not("https://store.epicgames.com/")in message.text:
+    links = ["https://github.com/", "https://www.youtube.com/", "https://store.steampowered.com/", "https://store.epicgames.com/"]
+    if "https://" and not links in message.text:
         bot.reply_to(message, "Ссылки в этом чате запрещены")
         bot.delete_message(message.chat.id, message.message_id)
-bot.infinity_polling()
 
 @bot.message_handler(content_types=['new_chat_members'])
 def new_member(message):
